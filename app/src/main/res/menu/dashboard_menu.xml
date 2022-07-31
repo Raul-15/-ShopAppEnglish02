@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--TODO Step 3: Create a dashboard menu and add the setting action menu item.-->
+<!--START-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/log_out_atlternative"
+        android:icon="@drawable/ic_log_out_alternative"
+        android:title="@string/action_settings"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_cart"
+        android:icon="@drawable/ic_vector_cart"
+        android:title="@string/action_settings"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_vector_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="always" />
+
+</menu>
+    <!--END-->

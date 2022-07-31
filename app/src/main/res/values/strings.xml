@@ -1,0 +1,159 @@
+<resources>
+    <string name="app_name">Veterinaria Rondon</string>
+
+    <string name="content_description">Imagen</string>
+    <string name="title_login">LOGIN</string>
+    <string name="et_hint_email_id">Correo electronico</string>
+    <string name="et_hint_password">Contraseña</string>
+    <string name="lbl_forgot_password">¿Olvidaste tu clave?</string>
+    <string name="btn_lbl_login">Ingresa aquí</string>
+    <string name="don_t_have_an_account">¿No tienes una cuenta?</string>
+    <string name="register"><u>Regístrate</u></string>
+
+    <string name="create_an_account">CREAR CUENTA</string>
+
+    <string name="hint_last_name">Apellidos</string>
+    <string name="hint_first_name">Nombres</string>
+    <string name="et_hint_confirm_password">Confirma contraseña</string>
+
+    <string name="i_agree_to_the_terms_and_condition">Acepto los <u> Términos y condiciones </u></string>
+    <string name="btn_lbl_register">Regístrate</string>
+
+    <string name="already_have_an_account">¿Ya te creaste una cuenta?</string>
+    <string name="login"><u>Login</u></string>
+
+    <string name="err_msg_enter_first_name">Ingresa tus nombres, por favor.</string>
+    <string name="err_msg_enter_last_name">Ingresa tus apellidos, por favor.</string>
+    <string name="err_msg_enter_email">Ingresa tu correo electónico, por favor.</string>
+    <string name="err_msg_enter_password">Ingresa tu contraseña, por favor</string>
+    <string name="err_msg_enter_confirm_password">Ingresa tu contraseña, por favor.</string>
+    <string name="err_msg_password_and_confirm_password_mismatch">Las contraseñas no concuerdan.</string>
+    <string name="err_msg_agree_terms_and_condition">Acepta los terminos y condiciones, por favor</string>
+
+
+    <string name="please_wait">Espere un rato, porfavor&#8230;</string>
+
+
+    <string name="title_forgot_password">¿TE OLVIDASTE TU CLAVE?</string>
+    <string name="forgot_password_title_description">Ingresa tu nombre de usuario y correo electronico\ y te enviaremos un correo para reinici tu contraseña</string>
+    <string name="btn_lbl_submit">Enviar</string>
+
+
+    <string name="email_sent_success">\"¡Correo electronico enviado satisfactoriamente! \"</string>
+
+
+    <string name="register_success">Te registraste exitosamente.</string>
+
+
+    <string name="title_complete_profile">COMPLETA PERFIL DE USUARIO</string>
+    <string name="et_hint_mobile_number">Numero telefonico</string>
+    <string name="rb_lbl_male">MASCULINO</string>
+    <string name="rb_lbl_female">FEMENINO</string>
+    <string name="btn_lbl_save">GUARDAR</string>
+    <string name="read_storage_permission_denied">LO siento, denegaste el permiso de almacenamiento. Lo puedes habilitar en opciones desde tu dispositivo.</string>
+    <string name="image_selection_failed">¡La seleccion de la imagen falló!</string>
+    <string name="err_msg_enter_mobile_number">Ingresa tu numero telefonico, por favor.</string>
+    <string name="msg_profile_update_success">Tu perfil fue actualizado exitosamente.</string>
+    <!--    <string name="title_activity_dashboard">MainActivity</string>-->
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Menu Principal</string>
+    <string name="title_notifications">Notificaciones</string>
+    <string name="please_click_back_again_to_exit">Cliclea de nuevo para salir, por favor.</string>
+    <string name="title_products">Productos</string>
+    <string name="title_orders">Pedidos</string>
+    <string name="action_settings">Opciones</string>
+
+    <string name="title_settings">Opciones</string>
+    <string name="lbl_edit">Editar</string>
+    <string name="lbl_addresses">Direcciones</string>
+    <string name="btn_lbl_logout">Cerrar sesión</string>
+    <string name="title_edit_profile">EDITAR PERFIL</string>
+
+    <string name="action_add_product">AÑADIR PRODUCTO</string>
+
+    <string name="title_add_product">AÑADIR PRODUCTO</string>
+    <string name="et_hint_product_title">Título del producto</string>
+    <string name="et_hint_product_price">Precio del producto (S/.)</string>
+    <string name="et_hint_product_description">Descripcion del producto</string>
+    <string name="et_hint_product_quantity">Cantidad de producto</string>
+
+    <string name="err_msg_select_product_image">Selecciona una imagen de producto, porfavor.</string>
+    <string name="err_msg_enter_product_title">Ingresa el título del producto, porfavor.</string>
+    <string name="err_msg_enter_product_price">Ingresa el precio del producto, por favor.</string>
+    <string name="err_msg_enter_product_description">Ingresa la descripcion del producto, por favor.</string>
+    <string name="err_msg_enter_product_quantity">Ingresa la cantidad del producto, por favor.</string>
+
+    <string name="product_uploaded_success_message">Tu producto fue actualizado exitosamente.</string>
+    <string name="no_products_added_yet">¡No hay productos añadidos aún!</string>
+    <string name="no_dashboard_item_found">¡No se encontraron los productos!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="product_delete_success_message">Tu producto fue borrado exitosamente.</string>
+    <string name="delete_dialog_title">Borrar</string>
+    <string name="delete_dialog_message">¿ Estás seguro que quieres borrar el producto?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="title_product_details">DETALLES DEL PRODUCTO</string>
+    <string name="lbl_product_description">Descripcion del producto</string>
+    <string name="lbl_product_details_stock_quantity">Cantidad de abastecimiento</string>
+
+
+    <string name="btn_lbl_add_to_cart">AÑADIR AL CARRITO DE COMPRAS</string>
+    <string name="success_message_item_added_to_cart">Producto fue añadido al carrito de compras.</string>
+    <string name="btn_lbl_go_to_cart">GO TO CART</string>
+
+    <string name="title_my_cart">CARRITO DE COMPRAS</string>
+    <string name="no_cart_item_found">¡El producto no fue encontrado en el carrito de compras!</string>
+    <string name="lbl_subtotal">Subtotal</string>
+    <string name="lbl_shipping_charge">Cargos de envios</string>
+    <string name="lbl_total_amount">Monto total</string>
+    <string name="btn_lbl_checkout">Ir a pagar</string>
+    <string name="action_cart">CARRITO DE COMPRAS</string>
+
+    <string name="lbl_out_of_stock">AGOTADO</string>
+    <string name="msg_item_removed_successfully">Producto removido exitosamente.</string>
+
+
+    <string name="msg_for_available_stock">¡El abastecimiento disponible es %1$s!. Tu no puedes añadir mas que la cantidad en almacen.</string>
+
+    <string name="title_address_list">ADDRESS LIST</string>
+    <string name="no_address_found">No Address Found!</string>
+    <string name="lbL_add_address">Add Address</string>
+
+    <string name="title_add_address">ADD ADDRESS</string>
+    <string name="hint_full_name">Full name</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="hint_address">Address</string>
+    <string name="hint_zip_code">ZipCode</string>
+    <string name="hint_additional_note">Additional note</string>
+    <string name="hint_other_details">Other details</string>
+    <string name="lbl_home">HOME</string>
+    <string name="lbl_office">OFFICE</string>
+    <string name="lbl_other">OTHER</string>
+
+
+    <string name="err_msg_please_enter_full_name">Please enter full name.</string>
+    <string name="err_msg_please_enter_phone_number">Please enter phone number.</string>
+    <string name="err_msg_please_enter_address">Please enter address.</string>
+    <string name="err_msg_please_enter_zip_code">Please enter zip-code.</string>
+    <string name="err_msg_please_enter_other_details">Please enter other details.</string>
+
+    <string name="err_your_address_added_successfully">Your address is added successfully.</string>
+
+    <string name="title_edit_address">EDIT ADDRESS</string>
+    <string name="btn_lbl_update">UPDATE</string>
+    <string name="msg_your_address_updated_successfully">Your address is updated successfully.</string>
+
+    <string name="err_your_address_deleted_successfully">Your address is deleted successfully.</string>
+    <string name="title_select_address">SELECT ADDRESS</string>
+
+    <string name="title_checkout">CHECKOUT</string>
+    <string name="checkout_lbl_product_items">Product Items</string>
+    <string name="checkout_lbl_selected_address">Selected Address</string>
+    <string name="checkout_lbl_items_receipt">Items Receipt</string>
+    <string name="lbl_payment_mode">Payment Mode</string>
+    <string name="lbl_cash_on_delivery">Cash On Delivery</string>
+    <string name="btn_lbl_place_order">PLACE ORDER</string>
+</resources>

@@ -1,0 +1,32 @@
+- Se crear parceable en Modelo: User
+- UserProfile:
+    * Deshabilita el editado de algunos campos al momento de editar perfil
+
+VIDEO87
+TERMINADO
+QUEDA PENDIENTE EL ERROR DE LA TUERCA
+
+
+* ERRORES
+ - el boton/icono de back en registro de usuario no aparece(ARREGLADOX EL FONDO DE PANTALLA)
+ - (SOLUCION: ERA LA IMAGEN DEL FONDO DEL IMAGEVIW )LA IMAGEN DEL PERFIL NO PUEDE AGREGARSE, YA SE VIO EL LAYOUT Y EL CODIGO DE USERPROFILEACTIVITY ESTA CORRECTO
+    *PONGO UNA IMAGEN Y NO APARECE PREVISUALIZADA.
+    *NI CON GLIDE SE ACTIVA
+ - (SOLUCION: ERA CAMBIAR LAS REGLAS)LA IMAGEN NO SBIA A FIREBASE
+    - NUEVA REGLA :
+        rules_version = '2';
+        service firebase.storage {
+          match /b/{bucket}/o {
+            match /{allPaths=**} {
+             allow read, write: if request.auth != null;
+            }
+          }
+        }
+- ERROR: AL INGRESAR A SETTINGS ACTIVITY LA TUERCA ME BOTA LA APP
+- VERIFICAR EXTRA_PRODUCT_ID
+
+
+ PLUGIN NUEVO
+ android parcelable code generator EN SETTINGS/PLUGIN
+ colocar android extensions en gradle
+ VIDEO 38 minuto 3
