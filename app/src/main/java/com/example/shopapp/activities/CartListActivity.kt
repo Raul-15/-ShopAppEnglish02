@@ -1,5 +1,6 @@
 package com.example.shopapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import com.example.shopapp.R
 import com.example.shopapp.adapters.CartItemsListAdapter
 import com.example.shopapp.firestore.FirestoreClass
 import com.example.shopapp.models.Cart
+import com.example.shopapp.utils.Constants
 import com.myshoppal.models.Product
 import kotlinx.android.synthetic.main.activity_cart_list.*
 
@@ -31,6 +33,11 @@ class CartListActivity : BaseActivity() {
         // START
         setupActionBar()
         // END
+        btn_checkout.setOnClickListener {
+            val intent = Intent(this@CartListActivity, AddressListActivity::class.java)
+            intent.putExtra(Constants.EXTRA_SELECT_ADDRESS, true)
+            startActivity(intent)
+        }
     }
     fun itemUpdateSuccess() {
 

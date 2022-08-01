@@ -1,5 +1,6 @@
 package com.example.shopapp.activities
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,21 +14,52 @@ import com.example.shopapp.R
 import com.example.shopapp.adapters.AddressListAdapter
 import com.example.shopapp.firestore.FirestoreClass
 import com.example.shopapp.models.Address
+import com.example.shopapp.utils.Constants
 import com.example.shopapp.utils.SwipeToDeleteCallback
 import com.example.shopapp.utils.SwipeToEditCallback
 import kotlinx.android.synthetic.main.activity_address_list.*
 import kotlinx.android.synthetic.main.activity_register.*
 
 class AddressListActivity : BaseActivity() {
+    // TODO Step 3: Declare a global variable to select the address.
+    // START
+    private var mSelectAddress: Boolean = false
+
+    // END
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_address_list)
+
         setupActionBar()
+
         tv_add_address.setOnClickListener {
             val intent = Intent(this@AddressListActivity, AddEditAddressActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, Constants.ADD_ADDRESS_REQUEST_CODE)
         }
+        // TODO Step 4: Receive the value and initialize the variable to select the address.
+        // START
+        if (intent.hasExtra(Constants.EXTRA_SELECT_ADDRESS)) {
+            mSelectAddress =
+                intent.getBooleanExtra(Constants.EXTRA_SELECT_ADDRESS, false)
+        }
+        // END
 
+        // TODO Step 5: If it is about to select the address then update the title.
+        // START
+        if (mSelectAddress) {
+            tv_title_address_list.text = resources.getString(R.string.title_select_address)
+        }
+        // END
+
+
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            getAddressList()
+        }
     }
 
     override fun onResume() {
@@ -90,7 +122,8 @@ class AddressListActivity : BaseActivity() {
             rv_address_list.layoutManager = LinearLayoutManager(this@AddressListActivity)
             rv_address_list.setHasFixedSize(true)
 
-            val addressAdapter = AddressListAdapter(this@AddressListActivity, addressList)
+            val addressAdapter =
+                AddressListAdapter(this@AddressListActivity, addressList, mSelectAddress)
             rv_address_list.adapter = addressAdapter
             // TODO Step 3: Add the swipe to edit feature.
             // START
@@ -107,35 +140,42 @@ class AddressListActivity : BaseActivity() {
                     // END
                 }
             }
-            val editItemTouchHelper = ItemTouchHelper(editSwipeHandler)
-            editItemTouchHelper.attachToRecyclerView(rv_address_list)
-            // END
+            if (!mSelectAddress) {
+                val editSwipeHandler = object : SwipeToEditCallback(this) {
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
-            // TODO Step 3: Add the swipe right to delete address feature.
-            // START
-            val deleteSwipeHandler = object : SwipeToDeleteCallback(this) {
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
-                    // Show the progress dialog.
-                    showProgressDialog(resources.getString(R.string.please_wait))
-
-                    // TODO Step 5: Call the function to delete the address from cloud firetore.
-                    // START
-                    FirestoreClass().deleteAddress(
-                        this@AddressListActivity,
-                        addressList[viewHolder.adapterPosition].id
-                    )
-                    // END
+                        val adapter = rv_address_list.adapter as AddressListAdapter
+                        adapter.notifyEditItem(
+                            this@AddressListActivity,
+                            viewHolder.adapterPosition
+                        )
+                    }
                 }
+                val editItemTouchHelper = ItemTouchHelper(editSwipeHandler)
+                editItemTouchHelper.attachToRecyclerView(rv_address_list)
+
+
+                val deleteSwipeHandler = object : SwipeToDeleteCallback(this) {
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                        // Show the progress dialog.
+                        showProgressDialog(resources.getString(R.string.please_wait))
+
+                        FirestoreClass().deleteAddress(
+                            this@AddressListActivity,
+                            addressList[viewHolder.adapterPosition].id
+                        )
+                    }
+                }
+                val deleteItemTouchHelper = ItemTouchHelper(deleteSwipeHandler)
+                deleteItemTouchHelper.attachToRecyclerView(rv_address_list)
             }
-            val deleteItemTouchHelper = ItemTouchHelper(deleteSwipeHandler)
-            deleteItemTouchHelper.attachToRecyclerView(rv_address_list)
-            // END
         } else {
             rv_address_list.visibility = View.GONE
             tv_no_address_found.visibility = View.VISIBLE
         }
     }
+
     // END
     fun deleteAddressSuccess() {
 
