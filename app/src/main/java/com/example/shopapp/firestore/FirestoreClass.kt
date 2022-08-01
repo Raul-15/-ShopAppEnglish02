@@ -620,5 +620,55 @@ class FirestoreClass {
                 )
             }
     }
+    fun updateAddress(activity: AddEditAddressActivity, addressInfo: Address, addressId: String) {
 
+        mFireStore.collection(Constants.ADDRESSES)
+            .document(addressId)
+            // Here the userInfo are Field and the SetOption is set to merge. It is for if we wants to merge
+            .set(addressInfo, SetOptions.merge())
+            .addOnSuccessListener {
+
+                // Here call a function of base activity for transferring the result to it.
+                activity.addUpdateAddressSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while updating the Address.",
+                    e
+                )
+            }
+    }
+
+    // TODO Step 4: Create a function to delete the existing address from the cloud firestore.
+    // START
+    /**
+     * A function to delete the existing address from the cloud firestore.
+     *
+     * @param activity Base class
+     * @param addressId existing address id
+     */
+    fun deleteAddress(activity: AddressListActivity, addressId: String) {
+
+        mFireStore.collection(Constants.ADDRESSES)
+            .document(addressId)
+            .delete()
+            .addOnSuccessListener {
+
+                // TODO Step 8: Notify the success result.
+                // START
+                // Here call a function of base activity for transferring the result to it.
+                activity.deleteAddressSuccess()
+                // END
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while deleting the address.",
+                    e
+                )
+            }
+    }
 }

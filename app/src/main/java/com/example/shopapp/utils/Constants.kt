@@ -55,6 +55,8 @@ object Constants {
 
     const val ADDRESSES: String = "address"
 
+    const val EXTRA_ADDRESS_DETAILS: String = "AddressDetails"
+
     fun showImageChooser(activity: Activity) {
         // An intent for launching the image selection of phone storage.
         val galleryIntent = Intent(
