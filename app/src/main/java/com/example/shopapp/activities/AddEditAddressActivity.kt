@@ -15,20 +15,29 @@ import kotlinx.android.synthetic.main.activity_address_list.*
 import kotlinx.android.synthetic.main.activity_register.*
 
 class AddEditAddressActivity : BaseActivity() {
+
     private var mAddressDetails: Address? = null
 
+    /**
+     * This function is auto created by Android when the Activity Class is created.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
+        //This call the parent constructor
         super.onCreate(savedInstanceState)
+        // This is used to align the xml view to this class
         setContentView(R.layout.activity_add_edit_address)
+
         if (intent.hasExtra(Constants.EXTRA_ADDRESS_DETAILS)) {
             mAddressDetails =
                 intent.getParcelableExtra(Constants.EXTRA_ADDRESS_DETAILS)!!
         }
+
         setupActionBar()
+
         if (mAddressDetails != null) {
             if (mAddressDetails!!.id.isNotEmpty()) {
 
-                tv_title_address.text = resources.getString(R.string.title_edit_address)
+                tv_title.text = resources.getString(R.string.title_edit_address)
                 btn_submit_address.text = resources.getString(R.string.btn_lbl_update)
 
                 et_full_name.setText(mAddressDetails?.name)
@@ -52,10 +61,6 @@ class AddEditAddressActivity : BaseActivity() {
                 }
             }
         }
-        // TODO Step 7: Assign the on click event of submit button and save the address.
-        btn_submit_address.setOnClickListener {
-            saveAddressToFirestore()
-        }
 
         rg_type.setOnCheckedChangeListener { _, checkedId ->
             if (checkedId == R.id.rb_other) {
@@ -64,10 +69,15 @@ class AddEditAddressActivity : BaseActivity() {
                 til_other_details.visibility = View.GONE
             }
         }
-        // END
 
+        btn_submit_address.setOnClickListener {
+            saveAddressToFirestore()
+        }
     }
 
+    /**
+     * A function for actionBar Setup.
+     */
     private fun setupActionBar() {
 
         setSupportActionBar(toolbar_add_edit_address_activity)
@@ -75,13 +85,16 @@ class AddEditAddressActivity : BaseActivity() {
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24dp)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
         }
 
         toolbar_add_edit_address_activity.setNavigationOnClickListener { onBackPressed() }
     }
 
-    // START
+
+    /**
+     * A function to validate the address input entries.
+     */
     private fun validateData(): Boolean {
         return when {
 
@@ -122,6 +135,9 @@ class AddEditAddressActivity : BaseActivity() {
         }
     }
 
+    /**
+     * A function to save the address to the cloud firestore.
+     */
     private fun saveAddressToFirestore() {
 
         // Here we get the text from editText and trim the space
@@ -149,8 +165,6 @@ class AddEditAddressActivity : BaseActivity() {
                 }
             }
 
-            // TODO Step 7: Prepare address info in data model class.
-            // START
             val addressModel = Address(
                 FirestoreClass().getCurrentUserID(),
                 fullName,
@@ -161,6 +175,7 @@ class AddEditAddressActivity : BaseActivity() {
                 addressType,
                 otherDetails
             )
+
             if (mAddressDetails != null && mAddressDetails!!.id.isNotEmpty()) {
                 FirestoreClass().updateAddress(
                     this@AddEditAddressActivity,
@@ -169,22 +184,31 @@ class AddEditAddressActivity : BaseActivity() {
                 )
             } else {
                 FirestoreClass().addAddress(this@AddEditAddressActivity, addressModel)
-            }            // END
+            }
         }
     }
 
+    /**
+     * A function to notify the success result of address saved.
+     */
     fun addUpdateAddressSuccess() {
 
         // Hide progress dialog
         hideProgressDialog()
 
+        val notifySuccessMessage: String = if (mAddressDetails != null && mAddressDetails!!.id.isNotEmpty()) {
+            resources.getString(R.string.msg_your_address_updated_successfully)
+        } else {
+            resources.getString(R.string.err_your_address_added_successfully)
+        }
+
         Toast.makeText(
             this@AddEditAddressActivity,
-            resources.getString(R.string.err_your_address_added_successfully),
+            notifySuccessMessage,
             Toast.LENGTH_SHORT
         ).show()
-        setResult(RESULT_OK)
 
+        setResult(RESULT_OK)
         finish()
     }
 }

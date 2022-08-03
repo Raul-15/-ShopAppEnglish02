@@ -11,8 +11,8 @@ import com.example.shopapp.R
 import com.example.shopapp.adapters.CartItemsListAdapter
 import com.example.shopapp.firestore.FirestoreClass
 import com.example.shopapp.models.Cart
+import com.example.shopapp.models.Product
 import com.example.shopapp.utils.Constants
-import com.myshoppal.models.Product
 import kotlinx.android.synthetic.main.activity_cart_list.*
 
 class CartListActivity : BaseActivity() {
@@ -39,12 +39,14 @@ class CartListActivity : BaseActivity() {
             startActivity(intent)
         }
     }
+
     fun itemUpdateSuccess() {
 
         hideProgressDialog()
 
         getCartItemsList()
     }
+
     // TODO Step 8: Override the onResume function and call the function to getCartItemsList.
     // START
     override fun onResume() {
@@ -73,6 +75,7 @@ class CartListActivity : BaseActivity() {
 
         getCartItemsList()
     }
+
     private fun setupActionBar() {
 
         setSupportActionBar(toolbar_cart_list_activity)
@@ -96,6 +99,7 @@ class CartListActivity : BaseActivity() {
 
         FirestoreClass().getCartList(this@CartListActivity)
     }
+
     // END
 
     // TODO Step 5: Create a function to notify the success result of the cart items list from cloud firestore.
@@ -121,6 +125,7 @@ class CartListActivity : BaseActivity() {
                 }
             }
         }
+        mCartListItems = cartList
 
         if (cartList.size > 0) {
 
@@ -131,7 +136,7 @@ class CartListActivity : BaseActivity() {
             rv_cart_items_list.layoutManager = LinearLayoutManager(this@CartListActivity)
             rv_cart_items_list.setHasFixedSize(true)
 
-            val cartListAdapter = CartItemsListAdapter(this@CartListActivity, cartList)
+            val cartListAdapter = CartItemsListAdapter(this@CartListActivity, mCartListItems, true)
             rv_cart_items_list.adapter = cartListAdapter
 
             var subTotal: Double = 0.0

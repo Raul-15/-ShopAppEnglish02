@@ -12,7 +12,7 @@ import com.example.shopapp.R
 import com.example.shopapp.activities.AddProductActivity
 import com.example.shopapp.adapters.MyProductsListAdapter
 import com.example.shopapp.firestore.FirestoreClass
-import com.myshoppal.models.Product
+import com.example.shopapp.models.Product
 import kotlinx.android.synthetic.main.fragment_products.*
 
 class ProductsFragment : BaseFragment() {

@@ -10,16 +10,13 @@ import com.bumptech.glide.load.ImageHeaderParser
 import com.example.shopapp.activities.*
 import com.example.shopapp.fragments.DashboardFragment
 import com.example.shopapp.fragments.ProductsFragment
-import com.example.shopapp.models.Address
-import com.example.shopapp.models.Cart
-import com.example.shopapp.models.User
+import com.example.shopapp.models.*
 import com.example.shopapp.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.myshoppal.models.Product
 
 
 class FirestoreClass {
@@ -308,6 +305,7 @@ class FirestoreClass {
                 )
             }
     }
+
     fun removeItemFromCart(context: Context, cart_id: String) {
 
         // Cart items collection name
@@ -341,7 +339,8 @@ class FirestoreClass {
                 )
             }
     }
-    fun getAllProductsList(activity: CartListActivity) {
+
+    fun getAllProductsList(activity: Activity) {
         // The collection name for PRODUCTS
         mFireStore.collection(Constants.PRODUCTS)
             .get() // Will get the documents snapshots.
@@ -361,19 +360,35 @@ class FirestoreClass {
 
                     productsList.add(product)
                 }
+                when (activity) {
+                    is CartListActivity -> {
+                        activity.successProductsListFromFireStore(productsList)
 
-                // TODO Step 3: Pass the success result of the product list to the cart list activity.
-                // START
-                activity.successProductsListFromFireStore(productsList)
+                    }
+                    is CheckoutActivity -> {
+                        activity.successProductsListFromFireStore(productsList)
+                    }
+
+                }
                 // END
             }
             .addOnFailureListener { e ->
-                // Hide the progress dialog if there is any error based on the base class instance.
-                activity.hideProgressDialog()
+                when (activity) {
+                    is CartListActivity -> {
+                        // Hide the progress dialog if there is any error based on the base class instance.
+                        activity.hideProgressDialog()
+                    }
+                    is CheckoutActivity -> {
+                        // Hide the progress dialog if there is any error based on the base class instance.
+                        activity.hideProgressDialog()
+                    }
+                }
+
 
                 Log.e("Get Product List", "Error while getting all product list.", e)
             }
     }
+
     fun getDashboardItemsList(fragment: DashboardFragment) {
         // The collection name for PRODUCTS
         mFireStore.collection(Constants.PRODUCTS)
@@ -432,6 +447,7 @@ class FirestoreClass {
                 Log.e(activity.javaClass.simpleName, "Error while getting the product details.", e)
             }
     }
+
     fun addCartItems(activity: ProductDetailsActivity, addToCart: Cart) {
 
         mFireStore.collection(Constants.CART_ITEMS)
@@ -454,6 +470,7 @@ class FirestoreClass {
                 )
             }
     }
+
     fun getCartList(activity: Activity) {
         // The collection name for PRODUCTS
         mFireStore.collection(Constants.CART_ITEMS)
@@ -482,6 +499,9 @@ class FirestoreClass {
                     is CartListActivity -> {
                         activity.successCartItemsList(list)
                     }
+                    is CheckoutActivity -> {
+                        activity.successCartItemsList(list)
+                    }
                 }
                 // END
             }
@@ -489,6 +509,9 @@ class FirestoreClass {
                 // Hide the progress dialog if there is an error based on the activity instance.
                 when (activity) {
                     is CartListActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is CheckoutActivity -> {
                         activity.hideProgressDialog()
                     }
                 }
@@ -531,6 +554,7 @@ class FirestoreClass {
                 )
             }
     }
+
     fun checkIfItemExistInCart(activity: ProductDetailsActivity, productId: String) {
 
         mFireStore.collection(Constants.CART_ITEMS)
@@ -562,6 +586,7 @@ class FirestoreClass {
                 )
             }
     }
+
     fun getAddressesList(activity: AddressListActivity) {
         // The collection name for PRODUCTS
         mFireStore.collection(Constants.ADDRESSES)
@@ -582,10 +607,7 @@ class FirestoreClass {
                     addressList.add(address)
                 }
 
-                // TODO Step 4: Notify the success result to the base class.
-                // START
                 activity.successAddressListFromFirestore(addressList)
-                // END
             }
             .addOnFailureListener { e ->
                 // Here call a function of base activity for transferring the result to it.
@@ -594,8 +616,8 @@ class FirestoreClass {
 
                 Log.e(activity.javaClass.simpleName, "Error while getting the address list.", e)
             }
-
     }
+
     fun addAddress(activity: AddEditAddressActivity, addressInfo: Address) {
 
         // Collection name address.
@@ -620,6 +642,7 @@ class FirestoreClass {
                 )
             }
     }
+
     fun updateAddress(activity: AddEditAddressActivity, addressInfo: Address, addressId: String) {
 
         mFireStore.collection(Constants.ADDRESSES)
@@ -667,6 +690,31 @@ class FirestoreClass {
                 Log.e(
                     activity.javaClass.simpleName,
                     "Error while deleting the address.",
+                    e
+                )
+            }
+    }
+    fun placeOrder(activity: CheckoutActivity, order: Order) {
+
+        mFireStore.collection(Constants.ORDERS)
+            .document()
+            // Here the userInfo are Field and the SetOption is set to merge. It is for if we wants to merge
+            .set(order, SetOptions.merge())
+            .addOnSuccessListener {
+
+                // TODO Step 9: Notify the success result.
+                // START
+                // Here call a function of base activity for transferring the result to it.
+                activity.orderPlacedSuccess()
+                // END
+            }
+            .addOnFailureListener { e ->
+
+                // Hide the progress dialog if there is any error.
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while placing an order.",
                     e
                 )
             }

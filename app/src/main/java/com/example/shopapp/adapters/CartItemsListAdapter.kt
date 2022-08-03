@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.item_cart_layout.view.*
 
 open class CartItemsListAdapter(
     private val context: Context,
-    private var list: ArrayList<Cart>
+    private var list: ArrayList<Cart>,
+    private val updateCartItems: Boolean
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     /**
@@ -65,6 +66,12 @@ open class CartItemsListAdapter(
                 holder.itemView.ib_remove_cart_item.visibility = View.GONE
                 holder.itemView.ib_add_cart_item.visibility = View.GONE
 
+                if (updateCartItems) {
+                    holder.itemView.ib_delete_cart_item.visibility = View.VISIBLE
+                } else {
+                    holder.itemView.ib_delete_cart_item.visibility = View.GONE
+                }
+
                 holder.itemView.tv_cart_quantity.text =
                     context.resources.getString(R.string.lbl_out_of_stock)
 
@@ -75,8 +82,17 @@ open class CartItemsListAdapter(
                     )
                 )
             } else {
-                holder.itemView.ib_remove_cart_item.visibility = View.VISIBLE
-                holder.itemView.ib_add_cart_item.visibility = View.VISIBLE
+                if (updateCartItems) {
+                    holder.itemView.ib_remove_cart_item.visibility = View.VISIBLE
+                    holder.itemView.ib_add_cart_item.visibility = View.VISIBLE
+                    holder.itemView.ib_delete_cart_item.visibility = View.VISIBLE
+
+                } else {
+                    holder.itemView.ib_remove_cart_item.visibility = View.GONE
+                    holder.itemView.ib_add_cart_item.visibility = View.GONE
+                    holder.itemView.ib_delete_cart_item.visibility = View.GONE
+                }
+
 
                 holder.itemView.tv_cart_quantity.setTextColor(
                     ContextCompat.getColor(
@@ -115,7 +131,7 @@ open class CartItemsListAdapter(
                 }
 
 
-        }
+            }
             holder.itemView.ib_add_cart_item.setOnClickListener {
                 val cartQuantity: Int = model.cart_quantity.toInt()
 

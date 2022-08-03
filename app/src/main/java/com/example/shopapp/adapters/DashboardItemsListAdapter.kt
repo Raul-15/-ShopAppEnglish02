@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shopapp.R
 import com.example.shopapp.activities.ProductDetailsActivity
+import com.example.shopapp.models.Product
 import com.example.shopapp.utils.Constants
 import com.example.shopapp.utils.GlideLoader
 
-import com.myshoppal.models.Product
 
 import kotlinx.android.synthetic.main.item_dashboard_layout.view.*
 

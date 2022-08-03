@@ -14,8 +14,8 @@ import com.example.shopapp.activities.LoginActivity
 import com.example.shopapp.activities.SettingsActivity
 import com.example.shopapp.adapters.DashboardItemsListAdapter
 import com.example.shopapp.firestore.FirestoreClass
+import com.example.shopapp.models.Product
 import com.google.firebase.auth.FirebaseAuth
-import com.myshoppal.models.Product
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 

@@ -15,9 +15,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.shopapp.R
 import com.example.shopapp.firestore.FirestoreClass
+import com.example.shopapp.models.Product
 import com.example.shopapp.utils.Constants
 import com.example.shopapp.utils.GlideLoader
-import com.myshoppal.models.Product
 import kotlinx.android.synthetic.main.activity_add_product.*
 import java.io.IOException
 
@@ -150,6 +150,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
 
         toolbar_add_product_activity.setNavigationOnClickListener { onBackPressed() }
     }
+
 
     /**
      * A function to validate the product details.

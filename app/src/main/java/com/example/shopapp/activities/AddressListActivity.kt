@@ -80,12 +80,19 @@ class AddressListActivity : BaseActivity() {
         toolbar_address_list_activity.setNavigationOnClickListener { onBackPressed() }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@AddressListActivity, DashboardActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun getAddressList() {
 
         // Show the progress dialog.
         showProgressDialog(resources.getString(R.string.please_wait))
-
         FirestoreClass().getAddressesList(this@AddressListActivity)
+        // Hide the progress dialog
+        hideProgressDialog()
     }
     // END
 
