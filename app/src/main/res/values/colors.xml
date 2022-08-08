@@ -11,7 +11,7 @@
 
     <color name="colorPrimary">#FF000000</color>
     <color name="colorPrimaryDark">#FF000000</color>
-    <color name="colorAccent">#FF000000</color>
+    <color name="colorAccent">#F30808</color>
 
     <color name="colorThemePink">#FF000000</color>
     <color name="colorThemeOrange">#FF000000</color>
@@ -39,5 +39,11 @@
     <color name="item_value_text_color">#545353</color>
 
     <color name="dashboard_item_details_bg">#F3F3F3</color>
+    <!--END-->
+
+    <!--TODO Step 9: Add the color resources to the colors.xml file-->
+    <!--START-->
+    <color name="colorOrderStatusInProcess">#FF9800</color>
+    <color name="colorOrderStatusDelivered">#8BC34A</color>
     <!--END-->
 </resources>

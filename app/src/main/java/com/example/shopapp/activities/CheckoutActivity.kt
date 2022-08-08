@@ -40,7 +40,9 @@ class CheckoutActivity : BaseActivity() {
 
     // A global variable for the Total Amount.
     private var mTotalAmount: Double = 0.0
+
     // END
+    private lateinit var mOrderDetails: Order
 
     /**
      * This function is auto created by Android when the Activity Class is created.
@@ -211,7 +213,7 @@ class CheckoutActivity : BaseActivity() {
 
         // TODO Step 5: Now prepare the order details based on all the required details.
         // START
-        val order = Order(
+        mOrderDetails = Order(
             FirestoreClass().getCurrentUserID(),
             mCartItemsList,
             mAddressDetails!!,
@@ -220,12 +222,13 @@ class CheckoutActivity : BaseActivity() {
             mSubTotal.toString(),
             "10.0", // The Shipping Charge is fixed as $10 for now in our case.
             mTotalAmount.toString(),
+            System.currentTimeMillis()
         )
         // END
 
         // TODO Step 10: Call the function to place the order in the cloud firestore.
         // START
-        FirestoreClass().placeOrder(this@CheckoutActivity, order)
+        FirestoreClass().placeOrder(this@CheckoutActivity, mOrderDetails)
         // END
     }
     // END
@@ -236,8 +239,8 @@ class CheckoutActivity : BaseActivity() {
     /**
      * A function to notify the success result of the order placed.
      */
-    fun orderPlacedSuccess() {
 
+    fun allDetailsUpdatedSuccessfully() {
         hideProgressDialog()
 
         Toast.makeText(this@CheckoutActivity, "Your order placed successfully.", Toast.LENGTH_SHORT)
@@ -247,5 +250,10 @@ class CheckoutActivity : BaseActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
+    }
+
+    fun orderPlacedSuccess() {
+
+        FirestoreClass().updateAllDetails(this, mCartItemsList,mOrderDetails)
     }
 }

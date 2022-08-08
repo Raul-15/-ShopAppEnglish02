@@ -20,6 +20,7 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
     // A global variable for product id.
     private var mProductId: String = ""
     private lateinit var mProductDetails: Product
+    private var mProductOwnerId: String = ""
 
 
     /**
@@ -38,15 +39,15 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
         }
 
         // TODO: aqui se programa la parte para que se vea el propietario del producto
-        var productOwnerId: String = ""
+        //  var productOwnerId: String = ""
         if (intent.hasExtra(Constants.EXTRA_PRODUCT_OWNER_ID)) {
-            productOwnerId =
+            mProductOwnerId =
                 intent.getStringExtra(Constants.EXTRA_PRODUCT_OWNER_ID)!!
 
         }
         setupActionBar()
 
-        if (FirestoreClass().getCurrentUserID() == productOwnerId) {
+        if (FirestoreClass().getCurrentUserID() == mProductOwnerId) {
             btn_add_to_cart.visibility = View.GONE
             btn_go_to_cart.visibility = View.GONE
 
@@ -183,6 +184,7 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
 
         val addToCart = Cart(
             FirestoreClass().getCurrentUserID(),
+            mProductOwnerId,
             mProductId,
             mProductDetails.title,
             mProductDetails.price,

@@ -47,6 +47,7 @@
         <entry key="..\:/Users/Raul/OneDrive/Documentos/ShopApp/app/src/main/res/menu/dashboard_menu.xml" value="0.21" />
         <entry key="..\:/Users/Raul/OneDrive/Documentos/ShopApp/app/src/main/res/menu/ic_menu_item.xml" value="0.225" />
         <entry key="..\:/Users/Raul/OneDrive/Documentos/ShopApp/app/src/main/res/menu/nav_item.xml" value="0.225" />
+        <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/drawable-v24/ic_vector_sold_products.xml" value="0.153" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/drawable-v24/ic_vector_white_delete.xml" value="0.1215" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/drawable-v24/ic_vector_white_edit.xml" value="0.1215" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/drawable-v24/item_primary_color_border_background.xml" value="0.1585" />
@@ -56,13 +57,18 @@
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/activity_base.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/activity_checkout.xml" value="0.33" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/activity_dashboard.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/activity_my_order_details.xml" value="0.25" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/activity_product_details.xml" value="0.225" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/activity_register.xml" value="0.225" />
+        <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/activity_sold_product_details.xml" value="0.25" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/fragment_dashboard.xml" value="0.225" />
+        <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/fragment_orders.xml" value="0.225" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/fragment_products.xml" value="0.225" />
+        <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/fragment_sold_products.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/item_address_layout.xml" value="0.225" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/layout/item_dashboard_layout.xml" value="0.225" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/menu/add_product_menu.xml" value="0.225" />
+        <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
         <entry key="..\:/Users/Raul/OneDrive/Escritorio/Proyecto_final/ShopAppEnglish-master/ShopAppEnglish-master/app/src/main/res/menu/dashboard_menu.xml" value="0.225" />
       </map>
     </option>
